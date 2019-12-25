@@ -29,3 +29,6 @@ RUN	gcc selfadd.c -Wall -Wextra -O3 -o selfadd
 FROM	debian:buster-20191224-slim
 COPY	--from=builder /root/selfadd /usr/local/sbin/
 RUN	chmod u+s /usr/local/sbin/selfadd
+COPY	entrypoint /usr/local/bin/
+ENTRYPOINT	["/usr/local/bin/entrypoint"]
+CMD	["bash"]
