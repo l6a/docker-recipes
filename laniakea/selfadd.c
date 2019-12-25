@@ -18,6 +18,7 @@
 #include <unistd.h>
 #include <stdarg.h>
 #include <stdio.h>
+#include <string.h>
 
 static const char *getuser(const char *def)
 {
@@ -35,7 +36,7 @@ static void append(const char *path, const char *fmt, ...)
 	fclose(f);
 }
 
-int main()
+int main(int argc, char *argv[])
 {
 	uid_t i = getuid();
 	if(i) {
@@ -46,6 +47,10 @@ int main()
 		       "%s:x:%u:%u::%s/%s:%s\n", u, i, i, b, u, s);
 		append("/etc/group",
 		       "%s:x:%u:\n", u, i);
+
+		if(argc > 1)
+			if(!strcmp(argv[1], "-u"))
+				printf("%s\n", u);
 	}
 	return 0;
 }

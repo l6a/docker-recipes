@@ -16,7 +16,12 @@
 # permissions and limitations under the License.
 
 # A hack to give the user a proper user name; see "selfadd.c"
-selfadd
+u=$(selfadd -u)
+
+# Change directory to user home if it exists
+if test -d "/home/$u/"; then
+	cd "/home/$u/"
+fi
 
 # Run all commands
 exec "$@"
