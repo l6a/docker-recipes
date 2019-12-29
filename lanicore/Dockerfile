@@ -15,20 +15,27 @@
 
 #==============================================================================
 # The builder image
+
 FROM	debian:buster-20191224-slim AS builder
+
 RUN	apt-get update &&\
 	apt-get install -y gcc &&\
 	apt-get clean &&\
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
 WORKDIR /root
 ADD	selfadd.c .
 RUN	gcc selfadd.c -Wall -Wextra -O3 -o selfadd
 
 #==============================================================================
-# The laniakea image
+# The lanicore image
+
 FROM	debian:buster-20191224-slim
+
 COPY	--from=builder /root/selfadd /usr/local/sbin/
 RUN	chmod u+s /usr/local/sbin/selfadd
+
 COPY	entrypoint /usr/local/bin/
 ENTRYPOINT	["/usr/local/bin/entrypoint"]
+
 CMD	["bash"]
