@@ -20,13 +20,15 @@
 #include <stdio.h>
 #include <string.h>
 
-static const char *getuser(const char *def)
+static const char *
+getuser(const char *def)
 {
 	const char *u = getenv("USER");
 	return u ? u : def;
 }
 
-static void append(const char *path, const char *fmt, ...)
+static void
+append(const char *path, const char *fmt, ...)
 {
 	FILE *f = fopen(path, "a");
 	va_list args;
@@ -36,7 +38,8 @@ static void append(const char *path, const char *fmt, ...)
 	fclose(f);
 }
 
-int main(int argc, char *argv[])
+int
+main(int argc, char *argv[])
 {
 	uid_t i = getuid();
 	if(i) {
