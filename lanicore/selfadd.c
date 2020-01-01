@@ -27,11 +27,35 @@ getuser(const char *def)
 	return u ? u : def;
 }
 
-static void
-append(const char *path, const char *fmt, ...)
+static int
+match(FILE *f, const char *u, char d)
 {
-	FILE *f = fopen(path, "a");
+	for(; *u; ++u)
+		if(getc(f) != (int)*u)
+			return 0;
+	return getc(f) == (int)d;
+}
+
+static int
+nextline(FILE *f)
+{
+	for(;;) switch(getc(f)) {
+		case EOF : return 0; break;
+		case '\n': return 1; break;
+	}
+}
+
+static void
+append(const char *path, const char *u, const char *fmt, ...)
+{
 	va_list args;
+
+	FILE *f = fopen(path, "a+");
+	do {
+		if(match(f, u, ':'))
+			return; /* do not append */
+	} while(nextline(f));
+
 	va_start(args, fmt);
 	vfprintf(f, fmt, args);
 	va_end(args);
@@ -46,9 +70,9 @@ main(int argc, char *argv[])
 		const char *u = getuser("self");
 		const char *b = "/home";
 		const char *s = "/bin/bash";
-		append("/etc/passwd",
+		append("/etc/passwd", u,
 		       "%s:x:%u:%u::%s/%s:%s\n", u, i, i, b, u, s);
-		append("/etc/group",
+		append("/etc/group", u,
 		       "%s:x:%u:\n", u, i);
 
 		if(argc > 1)
