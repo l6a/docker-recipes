@@ -78,10 +78,11 @@ main(int argc, char *argv[])
 	uid_t i = getuid();
 	if(i) {
 		const char *u = getuser("self");
+		const char *m = "Laniakea User";
 		const char *b = "/home";
 		const char *s = "/bin/bash";
 		append("/etc/passwd", u,
-		       "%s:x:%u:%u::%s/%s:%s\n", u, i, i, b, u, s);
+		       "%s:x:%u:%u:%s:%s/%s:%s\n", u, i, i, m, b, u, s);
 		append("/etc/group", u,
 		       "%s:x:%u:\n", u, i);
 
