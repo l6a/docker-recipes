@@ -14,9 +14,14 @@
 # permissions and limitations under the License.
 
 #==============================================================================
+# The base image
+
+FROM	debian:buster-20191224-slim AS base
+
+#==============================================================================
 # The builder image
 
-FROM	debian:buster-20191224-slim AS builder
+FROM	base AS builder
 
 RUN	apt-get update &&\
 	apt-get install -y gcc &&\
@@ -30,7 +35,7 @@ RUN	gcc selfadd.c -Wall -Wextra -O3 -o selfadd
 #==============================================================================
 # The lanicore image
 
-FROM	debian:buster-20191224-slim
+FROM	base
 
 COPY	--from=builder /root/selfadd /usr/local/sbin/
 RUN	chmod u+s /usr/local/sbin/selfadd
