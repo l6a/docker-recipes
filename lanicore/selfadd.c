@@ -45,20 +45,30 @@ nextline(FILE *f)
 	}
 }
 
+static int
+exist(FILE *f, const char *u, char d)
+{
+	do {
+		if(match(f, u, d))
+			return 1;
+	} while(nextline(f));
+	return 0;
+}
+
 static void
 append(const char *path, const char *u, const char *fmt, ...)
 {
-	va_list args;
-
 	FILE *f = fopen(path, "a+");
-	do {
-		if(match(f, u, ':'))
-			return; /* do not append */
-	} while(nextline(f));
-
-	va_start(args, fmt);
-	vfprintf(f, fmt, args);
-	va_end(args);
+	if(exist(f, u, ':'))
+		fprintf(stderr,
+			"\"%s\" found in \"%s\"; do nothing.\n",
+			u, path);
+	else {
+		va_list args;
+		va_start(args, fmt);
+		vfprintf(f, fmt, args);
+		va_end(args);
+	}
 	fclose(f);
 }
 
