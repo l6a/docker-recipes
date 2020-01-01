@@ -27,13 +27,12 @@ RUN     sed -i- 's/^#//g;s/^d/# d/g;s/^ //g;' /etc/apt/sources.list &&\
 FROM	base AS builder
 
 RUN	apt-get update &&\
-	apt-get install -y gcc &&\
-	apt-get clean &&\
-	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+	apt-get install -y --no-install-recommends libc6-dev tcc &&\
+	apt-get clean && rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
 WORKDIR /root
 ADD	selfadd.c .
-RUN	gcc selfadd.c -Wall -Wextra -O3 -o selfadd
+RUN	tcc selfadd.c -Wall -o selfadd
 
 #==============================================================================
 # The lanicore image
