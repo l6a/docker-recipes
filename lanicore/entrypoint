@@ -17,10 +17,11 @@
 
 # A hack to give the user a proper user name; see "selfadd.c"
 u=$(/usr/local/sbin/selfadd -u)
+HOME=$(eval echo ~$u)
 
 # Change directory to user home if it exists
-if test -d "/home/$u/"; then
-	cd "/home/$u/"
+if test -d "$HOME"; then
+	cd "$HOME"
 fi
 
 # Run all commands
