@@ -16,8 +16,10 @@
 # permissions and limitations under the License.
 
 # A hack to give the user a proper user name; see "selfadd.c"
-u=$(/usr/local/sbin/selfadd -u)
-HOME=$(eval echo ~$u)
+export LOGNAME=$(/usr/local/sbin/selfadd -u)
+
+export USER="$LOGNAME"
+export HOME=$(eval echo ~$LOGNAME)
 
 # Change directory to user home if it exists
 if test -d "$HOME"; then
