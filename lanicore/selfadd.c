@@ -29,20 +29,26 @@
 #include <unistd.h>
 #include <string.h>
 
+#define USER  "USER"          /* user name environmental variable */
+#define NAME  "self"          /* default short user name */
+#define LNAME "Laniakea User" /* default long user name */
+#define BASE  "/home"         /* default base */
+#define SHELL "/bin/bash"     /* default shell */
+
 static const char *
-getuser(const char *def)
+getuser(void)
 {
-	const char *u = getenv("USER");
-	return u ? u : def;
+	const char *u = getenv(USER);
+	return u ? u : NAME;
 }
 
 static int
-match(FILE *f, const char *u, char d)
+match(FILE *f, const char *u)
 {
 	for(; *u; ++u)
 		if(getc(f) != (int)*u)
 			return 0;
-	return getc(f) == (int)d;
+	return getc(f) == (int)':';
 }
 
 static int
@@ -55,10 +61,10 @@ nextline(FILE *f)
 }
 
 static int
-exist(FILE *f, const char *u, char d)
+exist(FILE *f, const char *u)
 {
 	do {
-		if(match(f, u, d))
+		if(match(f, u))
 			return 1;
 	} while(nextline(f));
 	return 0;
@@ -76,9 +82,10 @@ append(const char *path, const char *u, const char *fmt, ...)
 		return;
 	}
 
-	if(exist(f, u, ':'))
+	if(exist(f, u))
 		fprintf(stderr,
-		        "\"%s\" found in \"%s\"; do nothing.\n",
+		        "\"%s\" found in \"%s\"; "
+			"do nothing\n",
 		        u, path);
 	else {
 		va_list args;
@@ -94,12 +101,12 @@ main(int argc, char *argv[])
 {
 	uid_t i = getuid();
 	if(i) {
-		const char *u = getuser("self");
-		const char *m = "Laniakea User";
-		const char *b = "/home";
-		const char *s = "/bin/bash";
+		const char *u = getuser();
+		const char *l = LNAME;
+		const char *b = BASE;
+		const char *s = SHELL;
 		append("/etc/passwd", u,
-		       "%s:x:%u:%u:%s:%s/%s:%s\n", u, i, i, m, b, u, s);
+		       "%s:x:%u:%u:%s:%s/%s:%s\n", u, i, i, l, b, u, s);
 		append("/etc/group", u,
 		       "%s:x:%u:\n", u, i);
 
