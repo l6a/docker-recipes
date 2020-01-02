@@ -68,10 +68,18 @@ static void
 append(const char *path, const char *u, const char *fmt, ...)
 {
 	FILE *f = fopen(path, "a+");
+	if(!f) {
+		fprintf(stderr,
+		        "Failed to open \"%s\" for reading and appending; "
+		        "do nothing\n",
+		        path);
+		return;
+	}
+
 	if(exist(f, u, ':'))
 		fprintf(stderr,
-			"\"%s\" found in \"%s\"; do nothing.\n",
-			u, path);
+		        "\"%s\" found in \"%s\"; do nothing.\n",
+		        u, path);
 	else {
 		va_list args;
 		va_start(args, fmt);
