@@ -14,10 +14,19 @@
  * implied.  See the License for the specific language governing
  * permissions and limitations under the License.
  */
+
+/**
+ ** Add $USER to "/etc/passwd" and "/etc/group"
+ **
+ ** Writing a BASH script to use `useradd` is probably the simplest
+ ** way to do the same thing.  However, setuid is disallowed for
+ ** scripts so we have to write a mini compiled program for this.
+ **/
+
 #include <stdlib.h>
-#include <unistd.h>
-#include <stdarg.h>
 #include <stdio.h>
+#include <stdarg.h>
+#include <unistd.h>
 #include <string.h>
 
 static const char *
@@ -86,9 +95,8 @@ main(int argc, char *argv[])
 		append("/etc/group", u,
 		       "%s:x:%u:\n", u, i);
 
-		if(argc > 1)
-			if(!strcmp(argv[1], "-u"))
-				printf("%s\n", u);
+		if(argc > 1 && !strcmp(argv[1], "-u"))
+			printf("%s\n", u);
 	}
 	return 0;
 }
