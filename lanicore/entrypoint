@@ -22,7 +22,7 @@ export USER="$LOGNAME"
 export HOME=$(eval echo ~$LOGNAME)
 
 # Change directory to user home if it exists
-if test -d "$HOME"; then
+if test "$PWD" = '/' -a -d "$HOME"; then
 	cd "$HOME"
 fi
 
