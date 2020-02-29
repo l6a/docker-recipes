@@ -44,7 +44,7 @@ FROM	base
 COPY	--from=builder /root/selfadd /usr/local/sbin/
 RUN	chmod u+s /usr/local/sbin/selfadd
 
-COPY	laniapt entrypoint /usr/local/sbin/
+COPY	lani* entrypoint /usr/local/sbin/
 ENTRYPOINT	["/usr/local/sbin/entrypoint"]
 
 CMD	["bash"]
