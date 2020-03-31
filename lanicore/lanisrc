@@ -27,6 +27,10 @@ dst="$2"
 
 echo "Download \"$src\" from Internet to \"$dst\" in Docker image"
 
+if ! which wget > /dev/null; then
+	laniapt ca-certificates wget
+fi
+
 loc="/usr/local/src"
 tmp="$loc/$(basename $src)"
 wget  -q   "$src" -P "$loc"
