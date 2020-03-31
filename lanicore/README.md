@@ -11,7 +11,7 @@ to `/etc/passwd` and `/etc/group`.
 Therefore, to run `lanicore`-based images as a named non-root user,
 use
 
-    docker run --rm -it -u $(id -u):$(id -g) -e USER=$(whoami) laniakeasrc/lanicore:20200224
+    docker run --rm -it -u $(id -u):$(id -g) -e USER=$(whoami) laniakeasrc/lanicore:20200327
 
 Images that build on `lanicore`, if override the entrypoint, should
 use an entrypoint script similar to `lanicore`'s.

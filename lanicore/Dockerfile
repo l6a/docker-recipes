@@ -13,7 +13,7 @@
 # implied.  See the License for the specific language governing
 # permissions and limitations under the License.
 
-ARG	snapdate=20200224
+ARG	snapdate=20200327
 
 #==============================================================================
 # The base image
