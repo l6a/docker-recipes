@@ -30,7 +30,7 @@ RUN	apt-get update &&\
 		git mercurial subversion &&\
 	apt-get clean && rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
-RUN	wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh &&\
+RUN	wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-py38_4.8.2-Linux-x86_64.sh -O ~/miniconda.sh &&\
 	/bin/bash ~/miniconda.sh -b -p /opt/conda &&\
 	rm ~/miniconda.sh &&\
 	/opt/conda/bin/conda clean -tipsy &&\
