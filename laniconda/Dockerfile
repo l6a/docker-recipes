@@ -33,11 +33,11 @@ RUN	wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-py38_4.8.2-Linux
 	/bin/bash ~/miniconda.sh -b -p /opt/conda &&\
 	rm ~/miniconda.sh &&\
 	/opt/conda/bin/conda clean -tipsy &&\
-	ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh &&\
-	echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc &&\
-	echo "conda activate base" >> ~/.bashrc &&\
 	find /opt/conda/ -follow -type f -name '*.a' -delete &&\
 	find /opt/conda/ -follow -type f -name '*.js.map' -delete &&\
 	/opt/conda/bin/conda clean -afy
+RUN	ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh &&\
+	echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc &&\
+	echo "conda activate base" >> ~/.bashrc
 
 CMD	["/bin/bash"]
