@@ -14,11 +14,12 @@
 # permissions and limitations under the License.
 
 ARG	snapdate=20200327
+ARG	sha256=7371081a11cb8d073567eb2479b6fe1b3c2736846948ad5b910904e4c2726302
 
 #==============================================================================
 # The base image: an official debian slim image
 
-FROM	debian:buster-${snapdate}-slim AS base
+FROM	debian:buster-${snapdate}-slim@sha256:${sha256} AS base
 
 RUN     sed -i- 's/^#//g;s/^d/# d/g;s/^ //g;' /etc/apt/sources.list &&\
 	echo 'Acquire::Check-Valid-Until false;' > /etc/apt/apt.conf.d/10nochk

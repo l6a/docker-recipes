@@ -14,11 +14,12 @@
 # permissions and limitations under the License.
 
 ARG	snapdate=20200327
+ARG	sha256=894d220863891b9b628da9c19d305ce88464c564c470561507a512ce5645b94a
 
 #==============================================================================
 # The base image: an official python image
 
-FROM	python:3.8.2-slim-buster AS base
+FROM	python:3.8.2-slim-buster@sha256:${sha256} AS base
 
 RUN     sed -i- 's/^#//g;s/^d/# d/g;s/^ //g;' /etc/apt/sources.list &&\
 	echo 'Acquire::Check-Valid-Until false;' > /etc/apt/apt.conf.d/10nochk
