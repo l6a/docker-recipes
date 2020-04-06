@@ -16,7 +16,7 @@
 ARG	snapdate=20200327
 
 #==============================================================================
-# The base image
+# The base image: an official debian slim image
 
 FROM	debian:buster-${snapdate}-slim AS base
 
@@ -24,7 +24,7 @@ RUN     sed -i- 's/^#//g;s/^d/# d/g;s/^ //g;' /etc/apt/sources.list &&\
 	echo 'Acquire::Check-Valid-Until false;' > /etc/apt/apt.conf.d/10nochk
 
 #==============================================================================
-# The builder image
+# The builder image: compile `selfadd`
 
 FROM	base AS builder
 
@@ -37,7 +37,7 @@ ADD	selfadd.c .
 RUN	tcc selfadd.c -Wall -o selfadd
 
 #==============================================================================
-# The lanicore image
+# The lanicore runtime image
 
 FROM	base
 

@@ -16,7 +16,7 @@
 ARG	snapdate=20200327
 
 #==============================================================================
-# The base image: the official python image
+# The base image: an official python image
 
 FROM	python:3.8.2-slim-buster AS base
 
@@ -29,7 +29,7 @@ RUN     sed -i- 's/^#//g;s/^d/# d/g;s/^ //g;' /etc/apt/sources.list &&\
 FROM	laniakeasrc/lanicore:${snapdate} AS builder
 
 #==============================================================================
-# The Laniakea python image
+# The Laniakea python runtime image
 
 FROM	base
 

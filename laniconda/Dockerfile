@@ -16,9 +16,14 @@
 ARG	snapdate=20200327
 
 #==============================================================================
-# The Laniakea Conda image
+# The base image: the lanicore image
 
-FROM	laniakeasrc/lanicore:${snapdate}
+FROM	laniakeasrc/lanicore:${snapdate} AS base
+
+#==============================================================================
+# The Laniakea Conda runtime image
+
+FROM	base
 
 ENV	LANG=C.UTF-8 LC_ALL=C.UTF-8
 ENV	PATH /opt/conda/bin:$PATH
