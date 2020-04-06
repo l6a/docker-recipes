@@ -47,4 +47,4 @@ RUN	chmod u+s /usr/local/sbin/selfadd
 COPY	lani* entrypoint /usr/local/sbin/
 ENTRYPOINT	["/usr/local/sbin/entrypoint"]
 
-CMD	["bash"]
+CMD	["/bin/bash"]

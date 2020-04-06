@@ -38,4 +38,4 @@ RUN	chmod u+s /usr/local/sbin/selfadd
 
 ENTRYPOINT	["/usr/local/sbin/entrypoint"]
 
-CMD	["python3"]
+CMD	["/usr/local/bin/python3"]

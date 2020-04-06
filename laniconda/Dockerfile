@@ -46,4 +46,4 @@ RUN	wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-py38_4.8.2-Linux
 	find /opt/conda/ -follow -type f -name '*.js.map' -delete &&\
 	/opt/conda/bin/conda clean -afy
 
-CMD	[ "/bin/bash" ]
+CMD	["/bin/bash"]
