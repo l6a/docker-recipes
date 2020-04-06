@@ -35,7 +35,7 @@ RUN	laniapt libc6-dev tcc &&\
 	rm selfadd.c
 
 #==============================================================================
-# The lanicore runtime image
+# The Laniakea base runtime image
 
 FROM	base
 

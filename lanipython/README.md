@@ -1,7 +1,7 @@
 # `lanipython`
 
 `lanipython` is Project Laniakea's base Docker image for python.
-Similar to the `lanicore` Docker image, it contains a special
+Similar to the `lanibase` Docker image, it contains a special
 `selfadd` program and an `entrypoint` script to enable running the
 container as a named non-root user.
 This makes `lanipython`-based containers behave like Singularity

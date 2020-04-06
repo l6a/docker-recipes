@@ -24,9 +24,9 @@ RUN     sed -i- 's/^#//g;s/^d/# d/g;s/^ //g;' /etc/apt/sources.list &&\
 	echo 'Acquire::Check-Valid-Until false;' > /etc/apt/apt.conf.d/10nochk
 
 #==============================================================================
-# The builder image: the lanicore image
+# The builder image: the Laniakea base image
 
-FROM	laniakeasrc/lanicore:${snapdate} AS builder
+FROM	laniakeasrc/lanibase:${snapdate} AS builder
 
 #==============================================================================
 # The Laniakea python runtime image

@@ -16,9 +16,9 @@
 ARG	snapdate=20200327
 
 #==============================================================================
-# The base image: the lanicore image
+# The base image: the Laniakea base image
 
-FROM	laniakeasrc/lanicore:${snapdate} AS base
+FROM	laniakeasrc/lanibase:${snapdate} AS base
 
 #==============================================================================
 # The Laniakea Conda runtime image
