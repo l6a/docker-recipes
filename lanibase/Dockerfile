@@ -38,6 +38,8 @@ RUN	laniapt libc6-dev tcc &&\
 # The Laniakea base runtime image
 
 FROM	base
+ENV	LANG=C.UTF-8 \
+	LC_ALL=C.UTF-8
 
 COPY	--from=builder /usr/local/sbin/* /usr/local/sbin/
 RUN	chmod u+s /usr/local/sbin/selfadd

@@ -24,9 +24,7 @@ FROM	laniakeasrc/lanibase:${snapdate} AS base
 # The Laniakea Conda runtime image
 
 FROM	base
-
-ENV	LANG=C.UTF-8 LC_ALL=C.UTF-8
-ENV	PATH /opt/conda/bin:$PATH
+ENV	PATH=/opt/conda/bin:$PATH
 
 RUN	apt-get update &&\
 	apt-get install -y --no-install-recommends \
