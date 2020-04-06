@@ -28,23 +28,19 @@ RUN     sed -i- 's/^#//g;s/^d/# d/g;s/^ //g;' /etc/apt/sources.list &&\
 
 FROM	base AS builder
 
-RUN	apt-get update &&\
-	apt-get install -y --no-install-recommends libc6-dev tcc &&\
-	apt-get clean && rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
-
-WORKDIR /root
-ADD	selfadd.c .
-RUN	tcc selfadd.c -Wall -o selfadd
+COPY	entrypoint lani* selfadd.c /usr/local/sbin/
+WORKDIR /usr/local/sbin/
+RUN	laniapt libc6-dev tcc &&\
+	tcc selfadd.c -Wall -o selfadd &&\
+	rm selfadd.c
 
 #==============================================================================
 # The lanicore runtime image
 
 FROM	base
 
-COPY	--from=builder /root/selfadd /usr/local/sbin/
+COPY	--from=builder /usr/local/sbin/* /usr/local/sbin/
 RUN	chmod u+s /usr/local/sbin/selfadd
 
-COPY	lani* entrypoint /usr/local/sbin/
 ENTRYPOINT	["/usr/local/sbin/entrypoint"]
-
 CMD	["/bin/bash"]
