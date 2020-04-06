@@ -16,6 +16,6 @@
 # permissions and limitations under the License.
 
 for d in lani{base,python,conda}; do
-	t=$(grep 'ARG[[:space:]]snapdate' lanibase/Dockerfile | cut -d= -f2)
+	t=$(sed -n 's/^ARG[[:space:]]*snapdate=\([0-9]*\)$/\1/p' $d/Dockerfile)
 	docker build -t laniakeasrc/$d:$t $d
 done
