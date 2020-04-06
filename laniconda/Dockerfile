@@ -26,13 +26,9 @@ FROM	laniakeasrc/lanibase:${snapdate} AS base
 FROM	base
 ENV	PATH=/opt/conda/bin:$PATH
 
-RUN	apt-get update &&\
-	apt-get install -y --no-install-recommends \
-		wget bzip2 ca-certificates \
+RUN	laniapt wget bzip2 ca-certificates \
 		libglib2.0-0 libxext6 libsm6 libxrender1 \
-		git mercurial subversion &&\
-	apt-get clean && rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
-
+		git mercurial subversion
 RUN	wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-py38_4.8.2-Linux-x86_64.sh -O ~/miniconda.sh &&\
 	/bin/bash ~/miniconda.sh -b -p /opt/conda &&\
 	rm ~/miniconda.sh &&\
