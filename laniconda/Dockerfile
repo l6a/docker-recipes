@@ -14,6 +14,7 @@
 # permissions and limitations under the License.
 
 ARG	snapdate=20200327
+ARG	condaversion=py38_4.8.2
 
 #==============================================================================
 # The base image: the Laniakea base image
@@ -25,11 +26,13 @@ FROM	laniakeasrc/lanibase:${snapdate} AS base
 
 FROM	base
 ENV	PATH=/opt/conda/bin:$PATH
+# HACK: redefine `ARG condaversion` so it survives after FROM
+ARG	condaversion
 
 RUN	laniapt wget bzip2 ca-certificates \
 		libglib2.0-0 libxext6 libsm6 libxrender1 \
 		git mercurial subversion
-RUN	wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-py38_4.8.2-Linux-x86_64.sh -O ~/miniconda.sh &&\
+RUN	wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-${condaversion}-Linux-x86_64.sh -O ~/miniconda.sh &&\
 	/bin/bash ~/miniconda.sh -b -p /opt/conda &&\
 	rm ~/miniconda.sh &&\
 	/opt/conda/bin/conda clean -tipsy &&\
