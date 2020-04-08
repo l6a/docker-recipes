@@ -15,6 +15,11 @@
 # implied.  See the License for the specific language governing
 # permissions and limitations under the License.
 
+if test $# -lt 1; then
+	echo "usage: $0 <repository>"
+	exit 0
+fi
+
 set -e
 
 rep=${1}
@@ -32,4 +37,12 @@ awk '/^ARG/{count++; \
   if(count==2) sub("=.*$", "='${ver}'"); \
 } {print $0}' Dockerfile~ > Dockerfile
 
-echo "Updated ${rep}/Dockerfile; run \`git tag ${rep}:${dst}\` after commit."
+if cmp -s Dockerfile Dockerfile~; then
+	echo 'No update was made to "Dockerfile"; DONE.'
+	mv Dockerfile~ Dockerfile # conserve inode
+else
+	cat <<EOF
+Updated "${rep}/Dockerfile"
+Please run \`git tag ${rep}:${dst} && git push --tag\` after commit.
+EOF
+fi
