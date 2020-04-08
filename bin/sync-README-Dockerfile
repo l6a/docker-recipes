@@ -26,7 +26,7 @@ rep=${1}
 
 cd ${rep}
 
-arr=($(awk '/^--- | --- | ---$/{getline; print}' README.md))
+arr=($(awk '/^--- | --- | ---$/{getline; print}' README*))
 dst=${arr[0]}
 src=${arr[2]}
 ver=${arr[4]}
