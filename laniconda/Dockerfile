@@ -13,6 +13,7 @@
 # implied.  See the License for the specific language governing
 # permissions and limitations under the License.
 
+ARG	tag=
 ARG	snapdate=20200327
 ARG	condaversion=py38_4.8.2
 

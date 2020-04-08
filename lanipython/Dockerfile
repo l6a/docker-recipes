@@ -13,6 +13,7 @@
 # implied.  See the License for the specific language governing
 # permissions and limitations under the License.
 
+ARG	tag=
 ARG	snapdate=20200327
 ARG	digest=sha256:894d220863891b9b628da9c19d305ce88464c564c470561507a512ce5645b94a
 

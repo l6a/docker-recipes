@@ -27,14 +27,12 @@ rep=${1}
 cd ${rep}
 
 arr=($(awk '/^--- | --- | ---$/{getline; print}' README*))
-dst=${arr[0]}
-src=${arr[2]}
-ver=${arr[4]}
 
 mv Dockerfile Dockerfile~
 awk '/^ARG/{count++; \
-  if(count==1) sub("=.*$", "='${src}'"); \
-  if(count==2) sub("=.*$", "='${ver}'"); \
+  if(count==1) sub("=.*$", "='${arr[0]}'"); \
+  if(count==2) sub("=.*$", "='${arr[2]}'"); \
+  if(count==3) sub("=.*$", "='${arr[4]}'"); \
 } {print $0}' Dockerfile~ > Dockerfile
 
 if cmp -s Dockerfile Dockerfile~; then
@@ -43,6 +41,6 @@ if cmp -s Dockerfile Dockerfile~; then
 else
 	cat <<EOF
 Updated "${rep}/Dockerfile"
-Please run \`git tag ${rep}:${dst} && git push --tag\` after commit.
+Please run \`git tag ${rep}:${arr[0]} && git push --tag\` after commit.
 EOF
 fi
