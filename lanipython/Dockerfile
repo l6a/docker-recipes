@@ -13,8 +13,8 @@
 # implied.  See the License for the specific language governing
 # permissions and limitations under the License.
 
-ARG	tag=
-ARG	snapdate=20200327
+ARG	dsttag=
+ARG	srctag=20200327
 ARG	digest=sha256:894d220863891b9b628da9c19d305ce88464c564c470561507a512ce5645b94a
 
 #==============================================================================
@@ -28,7 +28,7 @@ RUN     sed -i- 's/^#//g;s/^d/# d/g;s/^ //g;' /etc/apt/sources.list &&\
 #==============================================================================
 # The builder image: the Laniakea base image
 
-FROM	laniakeasrc/lanibase:${snapdate} AS builder
+FROM	laniakeasrc/lanibase:${srctag} AS builder
 
 #==============================================================================
 # The Laniakea python runtime image
