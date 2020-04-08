@@ -15,3 +15,9 @@ use
 
 Images that build on `lanibase`, if override the entrypoint, should
 use an entrypoint script similar to `lanibase`'s.
+
+## Releases
+
+`lanibase` tag | `debian` tag | `debian` digest
+--- | --- | ---
+20200327 | 20200327 | sha256:7371081a11cb8d073567eb2479b6fe1b3c2736846948ad5b910904e4c2726302
