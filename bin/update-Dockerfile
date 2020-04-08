@@ -15,6 +15,8 @@
 # implied.  See the License for the specific language governing
 # permissions and limitations under the License.
 
+set -e
+
 rep=${1}
 
 cd ${rep}
@@ -22,10 +24,12 @@ cd ${rep}
 arr=($(awk '/^--- | --- | ---$/{getline; print}' README.md))
 dst=${arr[0]}
 src=${arr[2]}
-dig=${arr[4]}
+ver=${arr[4]}
 
-sed -i~	-e "s/^ARG	snapdate=.*\$/ARG	snapdate=${src}/" \
-	-e "s/^ARG	digest=.*\$/ARG	digest=${dig}/" \
-	Dockerfile
+mv Dockerfile Dockerfile~
+awk '/^ARG/{count++; \
+  if(count==1) sub("=.*$", "='${src}'"); \
+  if(count==2) sub("=.*$", "='${ver}'"); \
+} {print $0}' Dockerfile~ > Dockerfile
 
 echo "Updated ${rep}/Dockerfile; run \`git tag ${rep}:${dst}\` after commit."
