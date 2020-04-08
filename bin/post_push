@@ -15,18 +15,24 @@
 # implied.  See the License for the specific language governing
 # permissions and limitations under the License.
 
-if test -f README*; then
-	echo "Try to create additional tags... "
-else
+input=$(echo README*)
+if test ! -f $input; then
+	echo "README not found; do nothing"
 	exit 0
 fi
 
 vars=($(awk '/^---[ |-]*$/{getline; print}' README* | tr -d ' ' | tr '|' '\n'))
 tags=($(echo ${vars[0]} | tr ',' '\n'))
 
+if test ${#tags[@]} -le 1; then
+	echo "No additional tags were found; do nothing"
+	exit 0
+fi
+
 for TAG in ${tags[@]:1}; do
+	echo "Retag and push \"$DOCKER_REPO:$TAG\""
 	docker tag $IMAGE_NAME $DOCKER_REPO:$TAG
 	docker push $DOCKER_REPO:$TAG
+	echo '----------------------------------------------------------------'
 done
-
 echo "DONE"
