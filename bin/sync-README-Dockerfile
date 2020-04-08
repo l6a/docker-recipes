@@ -22,17 +22,17 @@ fi
 
 set -e
 
-rep=${1}
+repo=${1}
+cd ${repo}
 
-cd ${rep}
-
-arr=($(awk '/^--- | --- | ---$/{getline; print}' README*))
+vars=($(awk '/^---[ |-]*$/{getline; print}' README* | tr -d ' ' | tr '|' '\n'))
+tags=($(echo ${vars[0]} | tr ',' '\n'))
 
 mv Dockerfile Dockerfile~
 awk '/^ARG/{count++; \
-  if(count==1) sub("=.*$", "='${arr[0]}'"); \
-  if(count==2) sub("=.*$", "='${arr[2]}'"); \
-  if(count==3) sub("=.*$", "='${arr[4]}'"); \
+  if(count==1) sub("=.*$", "='${vars[0]}'"); \
+  if(count==2) sub("=.*$", "='${vars[1]}'"); \
+  if(count==3) sub("=.*$", "='${vars[2]}'"); \
 } {print $0}' Dockerfile~ > Dockerfile
 
 if cmp -s Dockerfile Dockerfile~; then
@@ -40,7 +40,7 @@ if cmp -s Dockerfile Dockerfile~; then
 	mv Dockerfile~ Dockerfile # conserve inode
 else
 	cat <<EOF
-Updated "${rep}/Dockerfile"
-Please run \`git tag ${rep}:${arr[0]} && git push --tag\` after commit.
+Updated "${repo}/Dockerfile"
+Please run \`git tag ${repo}:${tags[0]} && git push --tag\` after commit.
 EOF
 fi
