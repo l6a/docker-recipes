@@ -30,3 +30,13 @@ Laniakea avoid pulling information that changes with time.
 For example, we freeze the package repository to a snapshot in
 `lanibase` to ensure that it always installs the same set of packages.
 We also require that pip packages mark their specific versions.
+
+## Image Releases
+
+Because reproducibility is the main goal, Project Laniakea is
+conservative in releasing its image.
+We avoid releasing the version `x.0` software as there are often bug
+fixes; we also avoid the latest software as their official Docker
+images would change.
+Detailed release methods are described in each project's `README.md`
+file.
