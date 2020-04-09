@@ -20,4 +20,4 @@ use an entrypoint script similar to `lanibase`'s.
 
 `lanibase` tag | `debian` tag | `debian` digest
 --- | --- | ---
-20200327 | 20200327 | sha256:7371081a11cb8d073567eb2479b6fe1b3c2736846948ad5b910904e4c2726302
+10.1,20191014,buster,latest | buster-20191014-slim | sha256:11253793361a12861562d1d7b15b8b7e25ac30dd631e3d206ed1ca969bf97b7d
