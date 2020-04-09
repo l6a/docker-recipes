@@ -15,18 +15,18 @@
 # implied.  See the License for the specific language governing
 # permissions and limitations under the License.
 
-if test $# -lt 1; then
-	echo "usage: $0 <repository>"
+if test "${#}" -lt 1; then
+	echo "usage: ${0} <repository>"
 	exit 0
 fi
 
 set -e
 
-repo=${1}
-cd ${repo}
+repo="${1}"
+cd "${repo}"
 
 vars=($(awk '/^---[ |-]*$/{getline; print}' README* | tr -d ' `' | tr '|' '\n'))
-tags=($(echo ${vars[0]} | tr ',' '\n'))
+tags=($(echo "${vars[0]}" | tr ',' '\n'))
 
 awkc='/^ARG/{count++; '
 i=0
