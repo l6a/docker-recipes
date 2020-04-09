@@ -20,7 +20,7 @@ FROM	laniakeasrc/laniscm:${srctag}
 RUN	laniapt autoconf automake libtool make patch \
 		bzip2 unzip xz-utils \
 		dpkg-dev file \
-		gcc g++ \
+		gcc g++ gfortran \
 		imagemagick \
 		libbz2-dev \
 		libc6-dev \
