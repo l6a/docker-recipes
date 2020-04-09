@@ -11,7 +11,7 @@ to `/etc/passwd` and `/etc/group`.
 Therefore, to run `lanibase`-based images as a named non-root user,
 use
 
-    docker run --rm -it -u $(id -u):$(id -g) -e USER=$(whoami) laniakeasrc/lanibase:20200327
+    docker run --rm -it -u $(id -u):$(id -g) -e USER laniakeasrc/lanibase
 
 Images that build on `lanibase`, if override the entrypoint, should
 use an entrypoint script similar to `lanibase`'s.
