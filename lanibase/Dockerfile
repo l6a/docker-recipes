@@ -21,6 +21,7 @@ ARG	digest=sha256:7371081a11cb8d073567eb2479b6fe1b3c2736846948ad5b910904e4c27263
 # The base image: an official debian slim image
 
 FROM	debian:${srctag}@${digest} AS base
+LABEL	maintainer="Chi-kwan Chan <chanc@arizona.edu>"
 
 RUN     sed -i- 's/^#//g;s/^d/# d/g;s/^ //g;' /etc/apt/sources.list &&\
 	echo 'Acquire::Check-Valid-Until false;' > /etc/apt/apt.conf.d/10nochk
