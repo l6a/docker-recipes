@@ -28,13 +28,15 @@ cd ${repo}
 vars=($(awk '/^---[ |-]*$/{getline; print}' README* | tr -d ' `' | tr '|' '\n'))
 tags=($(echo ${vars[0]} | tr ',' '\n'))
 
-mv Dockerfile Dockerfile~
-awk '/^ARG/{count++; \
-  if(count==1) sub("=.*$", "='${vars[0]}'"); \
-  if(count==2) sub("=.*$", "='${vars[1]}'"); \
-  if(count==3) sub("=.*$", "='${vars[2]}'"); \
-} {print $0}' Dockerfile~ > Dockerfile
+awkc='/^ARG/{count++; '
+i=0
+for i in "${!vars[@]}"; do
+    awkc+="if(count==$(expr ${i} + 1)) sub(\"=.*\$\", \"=${vars[${i}]}\"); "
+done
+awkc+='} {print $0}'
 
+mv Dockerfile Dockerfile~
+awk "${awkc}" Dockerfile~ > Dockerfile
 if cmp -s Dockerfile Dockerfile~; then
 	mv Dockerfile~ Dockerfile # conserve inode
 	cat <<EOF
