@@ -25,7 +25,7 @@ set -e
 repo=${1}
 cd ${repo}
 
-vars=($(awk '/^---[ |-]*$/{getline; print}' README* | tr -d ' ' | tr '|' '\n'))
+vars=($(awk '/^---[ |-]*$/{getline; print}' README* | tr -d ' `' | tr '|' '\n'))
 tags=($(echo ${vars[0]} | tr ',' '\n'))
 
 mv Dockerfile Dockerfile~

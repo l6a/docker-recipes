@@ -21,7 +21,7 @@ if test ! -f $input; then
 	exit 0
 fi
 
-vars=($(awk '/^---[ |-]*$/{getline; print}' README* | tr -d ' ' | tr '|' '\n'))
+vars=($(awk '/^---[ |-]*$/{getline; print}' README* | tr -d ' `' | tr '|' '\n'))
 tags=($(echo ${vars[0]} | tr ',' '\n'))
 
 if test ${#tags[@]} -le 1; then
