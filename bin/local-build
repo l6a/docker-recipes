@@ -16,6 +16,8 @@
 # permissions and limitations under the License.
 
 for d in lani{base,python,conda}; do
-	t=$(sed -n 's/^ARG[[:space:]]*snapdate=\([0-9]*\)$/\1/p' $d/Dockerfile)
+	vars=($(awk '/^---[ |-]*$/{getline; print}' $d/README* | tr -d ' `' | tr '|' '\n'))
+	tags=($(echo ${vars[0]} | tr ',' '\n'))
+	t=${tags[0]}
 	docker build -t laniakeasrc/$d:$t $d
 done
