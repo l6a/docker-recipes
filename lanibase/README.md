@@ -1,6 +1,6 @@
-# `lanibase`
+# [`lanibase`][1]
 
-`lanibase` is the base Docker image used by Project Laniakea.
+[`lanibase`][1] is the base Docker image used by Project Laniakea.
 It contains a special `selfadd` program and an `entrypoint` script to
 enable running the container as a named non-root user.
 This makes `lanibase`-based containers behave like Singularity
@@ -18,6 +18,8 @@ use an entrypoint script similar to `lanibase`'s.
 
 ## Releases
 
-`lanibase` tags | `debian` tag | `debian` digest
+[`lanibase`][1] tags | `debian` tag | `debian` digest
 --- | --- | ---
 `10.1`, `20191014`, `buster`, `latest` | `buster-20191014-slim` | `sha256:11253793361a12861562d1d7b15b8b7e25ac30dd631e3d206ed1ca969bf97b7d`
+
+[1]: https://hub.docker.com/repository/docker/laniakeasrc/lanibase
