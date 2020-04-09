@@ -17,13 +17,10 @@ ARG	dsttag=
 ARG	srctag=
 
 FROM	laniakeasrc/laniscm:${srctag}
-RUN	laniapt autoconf \
-		automake \
-		bzip2 \
-		dpkg-dev \
-		file \
-		g++ \
-		gcc \
+RUN	laniapt autoconf automake libtool make patch \
+		bzip2 unzip xz-utils \
+		dpkg-dev file \
+		gcc g++ \
 		imagemagick \
 		libbz2-dev \
 		libc6-dev \
@@ -47,14 +44,9 @@ RUN	laniapt autoconf \
 		libreadline-dev \
 		libsqlite3-dev \
 		libssl-dev \
-		libtool \
 		libwebp-dev \
 		libxml2-dev \
 		libxslt-dev \
 		libyaml-dev \
-		make \
-		patch \
-		unzip \
-		xz-utils \
 		zlib1g-dev \
 		default-libmysqlclient-dev
