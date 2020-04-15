@@ -7,7 +7,7 @@ It is a base image to build `lanidev`.
 
 [`lanicurl`][1] tags | `lanibase` tag
 --- | ---
-`10.1`, `20191014`, `buster`, `latest` | `20191014`
+`10.2`, `20200130`, `buster`, `latest` | `20200130`
 
 Note that `lanicurl`'s "release tags", e.g., `10.1`, have different
 meaning than `debian`'s point release versions.

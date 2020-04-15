@@ -23,7 +23,7 @@ use an entrypoint script similar to `lanidev`'s.
 
 [`lanidev`][1] tags | `lanidev` tag
 --- | ---
-`10.1`, `20191014`, `buster`, `latest` | `20191014`
+`10.2`, `20200130`, `buster`, `latest` | `20200130`
 
 Note that `lanidev`'s "release tags", e.g., `10.1`, have different
 meaning than `debian`'s point release versions.
