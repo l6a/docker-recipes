@@ -16,7 +16,9 @@
 # permissions and limitations under the License.
 
 if test "${#}" -lt 1; then
-	echo "usage: ${0} <repository>"
+	for d in *[^bin]/; do
+		"${0}" "$d"
+	done
 	exit 0
 fi
 
