@@ -16,5 +16,5 @@
 ARG	dsttag=
 ARG	srctag=
 
-FROM	laniakeasrc/lanibase:${srctag}
+FROM	l6acon/lanibase:${srctag}
 RUN	laniapt ca-certificates curl netbase wget gnupg dirmngr

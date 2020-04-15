@@ -16,5 +16,5 @@
 ARG	dsttag=
 ARG	srctag=
 
-FROM	laniakeasrc/lanicurl:${srctag}
+FROM	l6acon/lanicurl:${srctag}
 RUN	laniapt git mercurial openssh-client subversion procps

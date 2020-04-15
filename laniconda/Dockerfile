@@ -20,7 +20,7 @@ ARG	condaversion=Miniconda3-py38_4.8.2-Linux-x86_64
 #==============================================================================
 # The base image: the Laniakea base image
 
-FROM	laniakeasrc/lanibase:${srctag} AS base
+FROM	l6acon/lanibase:${srctag} AS base
 
 #==============================================================================
 # The Laniakea Conda runtime image

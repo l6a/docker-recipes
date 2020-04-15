@@ -14,7 +14,7 @@ to `/etc/passwd` and `/etc/group`.
 Therefore, to run `lanidev`-based images as a named non-root user,
 use
 
-    docker run --rm -it -u $(id -u):$(id -g) -e USER laniakeasrc/lanidev
+    docker run --rm -it -u $(id -u):$(id -g) -e USER l6acon/lanidev
 
 Images that build on `lanidev`, if override the entrypoint, should
 use an entrypoint script similar to `lanidev`'s.
@@ -39,4 +39,4 @@ point release, there is a time lag between the same versions of
 `debian` Docker images and point releases.
 This time tag is carried over to `lanidev`.
 
-[1]: https://hub.docker.com/repository/docker/laniakeasrc/lanidev
+[1]: https://hub.docker.com/repository/docker/l6acon/lanidev

@@ -28,7 +28,7 @@ RUN     sed -i- 's/^#//g;s/^d/# d/g;s/^ //g;' /etc/apt/sources.list &&\
 #==============================================================================
 # The builder image: the Laniakea base image
 
-FROM	laniakeasrc/lanibase:${srctag} AS builder
+FROM	l6acon/lanibase:${srctag} AS builder
 
 #==============================================================================
 # The Laniakea python runtime image

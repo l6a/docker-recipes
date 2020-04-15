@@ -16,7 +16,7 @@
 ARG	dsttag=
 ARG	srctag=
 
-FROM	laniakeasrc/laniscm:${srctag}
+FROM	l6acon/laniscm:${srctag}
 RUN	laniapt autoconf automake libtool make patch \
 		bzip2 unzip xz-utils \
 		dpkg-dev file \

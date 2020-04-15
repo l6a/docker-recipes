@@ -11,7 +11,7 @@ to `/etc/passwd` and `/etc/group`.
 Therefore, to run `lanibase`-based images as a named non-root user,
 use
 
-    docker run --rm -it -u $(id -u):$(id -g) -e USER laniakeasrc/lanibase
+    docker run --rm -it -u $(id -u):$(id -g) -e USER l6acon/lanibase
 
 Images that build on `lanibase`, if override the entrypoint, should
 use an entrypoint script similar to `lanibase`'s.
@@ -36,4 +36,4 @@ point release, there is a time lag between the same versions of
 `debian` Docker images and point releases.
 This time tag is carried over to `lanibase`.
 
-[1]: https://hub.docker.com/repository/docker/laniakeasrc/lanibase
+[1]: https://hub.docker.com/repository/docker/l6acon/lanibase

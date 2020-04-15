@@ -24,4 +24,4 @@ point release, there is a time lag between the same versions of
 `debian` Docker images and point releases.
 This time tag is carried over to `laniscm`.
 
-[1]: https://hub.docker.com/repository/docker/laniakeasrc/laniscm
+[1]: https://hub.docker.com/repository/docker/l6acon/laniscm

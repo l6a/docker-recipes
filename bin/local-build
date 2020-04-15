@@ -16,8 +16,8 @@
 # permissions and limitations under the License.
 
 for d in lani{base,python,conda}; do
-	vars=($(awk '/^---[ |-]*$/{getline; print}' $d/README* | tr -d ' `' | tr '|' '\n'))
-	tags=($(echo ${vars[0]} | tr ',' '\n'))
-	t=${tags[0]}
-	docker build -t laniakeasrc/$d:$t $d
+	vars=($(awk '/^---[ |-]*$/{getline; print}' "${d}/"README* | tr -d ' `' | tr '|' '\n'))
+	tags=($(echo "${vars[0]}" | tr ',' '\n'))
+	t="${tags[0]}"
+	docker build -t "l6acon/$d:$t" "$d"
 done
