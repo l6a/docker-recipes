@@ -14,13 +14,13 @@
 # permissions and limitations under the License.
 
 ARG	dsttag=
-ARG	srctag=20200327
-ARG	digest=sha256:894d220863891b9b628da9c19d305ce88464c564c470561507a512ce5645b94a
+ARG	srctag=
+ARG	digest=
 
 #==============================================================================
 # The base image: an official python image
 
-FROM	python:3.8.2-slim-buster@${digest} AS base
+FROM	python@${digest} AS base
 
 RUN     sed -i- 's/^#//g;s/^d/# d/g;s/^ //g;' /etc/apt/sources.list &&\
 	echo 'Acquire::Check-Valid-Until false;' > /etc/apt/apt.conf.d/10nochk
