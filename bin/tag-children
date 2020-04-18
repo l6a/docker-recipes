@@ -26,21 +26,19 @@ PARENT_TAG="${1##*-}"
 echo "IMG: $PARENT_IMG"
 echo "TAG: $PARENT_TAG"
 
-for f in */Dockerfile; do
+for f in lani*/Dockerfile; do
 	echo "----------------------------------------------------------------"
 	d="${f%/Dockerfile}"
-	if grep -xq "^FROM	l6acon/${PARENT_IMG}.*$" "$f"; then
-		commit=$(git log --grep "git tag $d" --pretty='format:%H' | head -n1)
-		if test -n "$commit"; then
-			echo "\`$d\` depends on \`$PARENT_IMG\` :-)"
-			cmds=$(git log -1 "$commit" --pretty='format:%b' | sed 's/Please run `\(.*\) && git push --tag` after commit./\1/')
-			eval " $cmds $commit && git push --tag"
-			sleep 8
-		else
-			echo "\`$d\` depend on \`$PARENT_IMG\` but no commit was found.  SKIP"
-		fi
-	else
+	commit=$(git log --grep "git tag $d" --pretty='format:%H' | head -n1)
+	if ! grep -xq "^FROM	l6acon/${PARENT_IMG}.*$" "$f"; then
 		echo "\`$d\` does not depend on \`$PARENT_IMG\`.  SKIP"
+	elif test -z "$commit"; then
+		echo "\`$d\` depend on \`$PARENT_IMG\` but no commit was found.  SKIP"
+	else
+		echo "\`$d\` depends on \`$PARENT_IMG\` :-)"
+		cmds=$(git log -1 "$commit" --pretty='format:%b' | sed 's/Please run `\(.*\) && git push --tag` after commit./\1/')
+		eval " $cmds $commit && git push --tag"
+		sleep 8
 	fi
 done
 
