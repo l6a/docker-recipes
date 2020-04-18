@@ -21,6 +21,7 @@ use an entrypoint script similar to `laniconda`'s.
 
 [`laniconda`][1] tags | `lanibase` tag | Conda version
 --- | --- | ---
+`4.8.2`, `20200130`, `4.8`, `4`, `latest` | `20200130` | `py38_4.8.2`
 
 Note that `laniconda`'s "release tags", e.g., `10.1`, have different
 meaning than `debian`'s point release versions.
