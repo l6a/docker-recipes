@@ -16,27 +16,27 @@
 # permissions and limitations under the License.
 
 input=$(echo README*)
-if test ! -f $input; then
+if test ! -f "$input"; then
 	echo "README not found; do nothing"
 	exit 0
 fi
 
 vars=($(awk '/^---[ |-]*$/{getline; print}' README* | tr -d ' `' | tr '|' '\n'))
-tags=($(echo ${vars[0]} | tr ',' '\n'))
+tags=($(echo "${vars[0]}" | tr ',' '\n'))
 
-if test ${#tags[@]} -le 1; then
+if test "${#tags[@]}" -le 1; then
 	echo "No additional tags were found; do nothing"
 	exit 0
 fi
 
-GIT_TAG=$(basename "$IMAGE_NAME")
+GIT_TAG="$(basename "$DOCKER_REPO")-$DOCKER_TAG"
 
 echo "DOCKER_REPO: $DOCKER_REPO"
 echo "DOCKER_TAG : $DOCKER_TAG"
 echo "IMAGE_NAME : $IMAGE_NAME"
 echo "GIT_TAG    : $GIT_TAG"
 
-for TAG in ${tags[@]:1}; do
+for TAG in "${tags[@]:1}"; do
 	echo "----------------------------------------------------------------"
 	echo "Retag and push \"$DOCKER_REPO:$TAG\""
 	docker tag "$IMAGE_NAME" "$DOCKER_REPO:$TAG"
@@ -47,7 +47,7 @@ echo "----------------------------------------------------------------"
 echo -n "Trigger GitHub Action to tag dependence children of \"$GIT_TAG\""
 curl -H "Authorization: token $GITHUB_TOKEN"                   \
      -H "Accept: application/vnd.github.everest-preview+json"  \
-     "https://api.github.com/repos/l6a/test_action/dispatches" \
+     "https://api.github.com/repos/l6a/docker-recipes/dispatches" \
      -d "{\"event_type\": \"selftag\", \"client_payload\": {\
             \"docker_repo\": \"$DOCKER_REPO\",\
             \"docker_tag\" : \"$DOCKER_TAG\" ,\
