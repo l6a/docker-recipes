@@ -1,0 +1,13 @@
+name: dispatches
+on: repository_dispatch
+jobs:
+  selftag:
+    if: github.event.action == 'selftag'
+    name: '${{ github.event.action }}-${{ github.event.client_payload.git_tag }}'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 16
+      - run: 'echo "payload: ${{ toJson(github.event.client_payload) }}"'
+      - run: 'bin/tag-children "${{ github.event.client_payload.git_tag }}"'
