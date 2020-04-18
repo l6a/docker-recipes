@@ -29,6 +29,13 @@ if test ${#tags[@]} -le 1; then
 	exit 0
 fi
 
+GIT_TAG=$(basename "$IMAGE_NAME")
+
+echo "DOCKER_REPO: $DOCKER_REPO"
+echo "DOCKER_TAG : $DOCKER_TAG"
+echo "IMAGE_NAME : $IMAGE_NAME"
+echo "GIT_TAG    : $GIT_TAG"
+
 for TAG in ${tags[@]:1}; do
 	echo "----------------------------------------------------------------"
 	echo "Retag and push \"$DOCKER_REPO:$TAG\""
@@ -37,7 +44,6 @@ for TAG in ${tags[@]:1}; do
 done
 
 echo "----------------------------------------------------------------"
-GIT_TAG=$(basename "$IMAGE_NAME")
 echo -n "Trigger GitHub Action to tag dependence children of \"$GIT_TAG\""
 curl -H "Authorization: token $GITHUB_TOKEN"                   \
      -H "Accept: application/vnd.github.everest-preview+json"  \
@@ -45,6 +51,7 @@ curl -H "Authorization: token $GITHUB_TOKEN"                   \
      -d "{\"event_type\": \"selftag\", \"client_payload\": {\
             \"docker_repo\": \"$DOCKER_REPO\",\
             \"docker_tag\" : \"$DOCKER_TAG\" ,\
+            \"image_name\" : \"$IMAGE_NAME\" ,\
             \"git_tag\"    : \"$GIT_TAG\"    }}"
 
 echo "----------------------------------------------------------------"
