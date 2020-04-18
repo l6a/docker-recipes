@@ -16,7 +16,7 @@
 # permissions and limitations under the License.
 
 if test "${#}" -lt 1; then
-	for d in *[^bin]/; do
+	for d in lani{base,curl,scm,dev,python,conda}/; do
 		"${0}" "${d%/}"
 	done
 	exit 0
