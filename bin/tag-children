@@ -25,9 +25,9 @@ PARENT_TAG="${1##*-}"
 
 echo "IMG: $PARENT_IMG"
 echo "TAG: $PARENT_TAG"
-echo "----------------------------------------------------------------"
 
 for f in */Dockerfile; do
+	echo "----------------------------------------------------------------"
 	d="${f%/Dockerfile}"
 	if grep -xq "^FROM	l6acon/${PARENT_IMG}.*$" "$f"; then
 		echo "\`$d\` depends on \`$PARENT_IMG\` :-)"
@@ -38,6 +38,7 @@ for f in */Dockerfile; do
 	else
 		echo "\`$d\` does not depend on \`$PARENT_IMG\`."
 	fi
-	echo "----------------------------------------------------------------"
 done
+
+echo "----------------------------------------------------------------"
 echo "DONE"

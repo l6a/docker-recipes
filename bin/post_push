@@ -30,9 +30,11 @@ if test ${#tags[@]} -le 1; then
 fi
 
 for TAG in ${tags[@]:1}; do
+	echo "----------------------------------------------------------------"
 	echo "Retag and push \"$DOCKER_REPO:$TAG\""
 	docker tag "$IMAGE_NAME" "$DOCKER_REPO:$TAG"
 	docker push "$DOCKER_REPO:$TAG"
-	echo "----------------------------------------------------------------"
 done
+
+echo "----------------------------------------------------------------"
 echo "DONE"
