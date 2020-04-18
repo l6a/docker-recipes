@@ -13,8 +13,8 @@
 # implied.  See the License for the specific language governing
 # permissions and limitations under the License.
 
-ARG	dsttag=
-ARG	srctag=20200327
+ARG	dsttag=4.8.2,20200130,4.8,4,latest
+ARG	srctag=20200130
 ARG	condaversion=py38_4.8.2
 
 #==============================================================================
