@@ -44,5 +44,3 @@ RUN	printf "\n\
 . /opt/conda/etc/profile.d/conda.sh\n\
 conda activate base\n\
 " | tee -a /etc/profile /etc/bash.bashrc
-
-CMD	["/bin/bash"]

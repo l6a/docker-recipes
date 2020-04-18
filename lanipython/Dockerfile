@@ -39,4 +39,4 @@ COPY	--from=builder /usr/local/sbin/* /usr/local/sbin/
 RUN	chmod u+s /usr/local/sbin/selfadd
 
 ENTRYPOINT	["/usr/local/sbin/entrypoint"]
-CMD	["/usr/local/bin/python3"]
+CMD	["python3"]
