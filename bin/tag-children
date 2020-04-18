@@ -30,13 +30,17 @@ for f in */Dockerfile; do
 	echo "----------------------------------------------------------------"
 	d="${f%/Dockerfile}"
 	if grep -xq "^FROM	l6acon/${PARENT_IMG}.*$" "$f"; then
-		echo "\`$d\` depends on \`$PARENT_IMG\` :-)"
 		commit=$(git log --grep "git tag $d" --pretty='format:%H' | head -n1)
-		cmds=$(git log -1 "$commit" --pretty='format:%b' | sed 's/Please run `\(.*\) && git push --tag` after commit./\1/')
-		eval " $cmds $commit && git push --tag"
-		sleep 8
+		if test -n "$commit"; then
+			echo "\`$d\` depends on \`$PARENT_IMG\` :-)"
+			cmds=$(git log -1 "$commit" --pretty='format:%b' | sed 's/Please run `\(.*\) && git push --tag` after commit./\1/')
+			eval " $cmds $commit && git push --tag"
+			sleep 8
+		else
+			echo "\`$d\` depend on \`$PARENT_IMG\` but no commit was found.  SKIP"
+		fi
 	else
-		echo "\`$d\` does not depend on \`$PARENT_IMG\`."
+		echo "\`$d\` does not depend on \`$PARENT_IMG\`.  SKIP"
 	fi
 done
 
