@@ -26,7 +26,7 @@ PARENT_TAG="${1##*-}"
 echo "IMG: $PARENT_IMG"
 echo "TAG: $PARENT_TAG"
 
-for f in lani*/Dockerfile; do
+for f in */Dockerfile; do
 	echo "----------------------------------------------------------------"
 	d="${f%/Dockerfile}"
 	commit=$(git log --grep "git tag $d" --pretty='format:%H' | head -n1)

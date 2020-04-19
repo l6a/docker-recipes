@@ -21,6 +21,7 @@ if test "x${1}" == "x--commit"; then
 fi
 
 if test "${#}" -lt 1; then
+	# Note the specific order of the directories
 	for d in lani{base,curl,scm,dev,python,conda}/; do
 		eval "${0} ${commit} ${d%/}"
 	done

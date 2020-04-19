@@ -15,7 +15,8 @@
 # implied.  See the License for the specific language governing
 # permissions and limitations under the License.
 
-for d in lani{base,python,conda}; do
+for f in */Dockerfile; do
+	d="${f%/Dockerfile}"
 	vars=($(awk '/^---[ |-]*$/{getline; print}' "${d}/"README* | tr -d ' `' | tr '|' '\n'))
 	tags=($(echo "${vars[0]}" | tr ',' '\n'))
 	t="${tags[0]}"
