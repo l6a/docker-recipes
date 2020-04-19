@@ -21,9 +21,7 @@ if test ! -f "$input"; then
 	exit 0
 fi
 
-vars=($(awk '/^---[ |-]*$/{getline; print}' README* | tr -d ' `' | tr '|' '\n'))
-tags=($(echo "${vars[0]}" | tr ',' '\n'))
-
+tags=($(sed -n 's/^ARG	dsttag=\(.*\)$/\1/p' Dockerfile | tr ',' '\n'))
 if test "${#tags[@]}" -le 1; then
 	echo "No additional tags were found; do nothing"
 	exit 0
