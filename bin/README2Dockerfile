@@ -60,7 +60,7 @@ else
 	message=$(cat <<EOF
 Updated "${repo}/Dockerfile" for \`${repo}:${tags[0]}\`
 
-Please run \`git tag ${repo}-${tags[0]} && git push --tag\` after commit.
+Run \`git tag ${repo}-${tags[0]} && git push --tag\` after commit.
 EOF
 	)
 	if test "x$commit" == "x--commit"; then

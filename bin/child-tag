@@ -24,11 +24,12 @@ echo "Parent image: \"$1\""
 
 # We assume the image name takes the following form:
 #
-#     <domain>/<long:repo/name>:tag
+#     <domain.com>/<long:repo/name>:tag
 #
-# We allows the middle "long repo name" contain special characters such as '/' and ':'
+# We allows the middle "long repo name" contain special characters
+# such as '/' and ':'
 
-REPO_TAG="${1#*/}"    # remove short prefix (domain)
+REPO_TAG="${1#*.*/}"  # remove short prefix (domain)
 REPO="${REPO_TAG%:*}" # remove short suffix
 TAG="${REPO_TAG##*:}" # remove long  prefix
 
@@ -37,14 +38,19 @@ for f in */Dockerfile; do
 	d="${f%/Dockerfile}"
 	commit=$(git log --grep "git tag $d" --pretty='format:%H' | head -n1)
 	if ! grep -Eq "^FROM	${REPO}.*$" "$f"; then
-		echo "\`$d\` does not depend on \`$REPO_TAG\`.  SKIP"
+		echo "\"$d/\" does not depend on \`$REPO\`; SKIP"
 	elif test -z "$commit"; then
-		echo "\`$d\` depend on \`$REPO_TAG\` but no commit was found.  SKIP"
+		echo "\"$d/\" depend on \`$REPO\` but no commit was found; SKIP"
 	else
-		echo "\`$d\` depends on \`$REPO_TAG\` :-)"
-		cmds=$(git log -1 "$commit" --pretty='format:%b' | sed 's/Please run `\(.*\) && git push --tag` after commit./\1/')
-		eval " $cmds $commit && git push --tag"
-		sleep 8
+		tag=$(git log -1 "$commit" --pretty='format:%b' |
+		      sed -n 's/^.*`git tag \(.*\) && git push --tag`.*$/\1/p')
+		if git tag "$tag" "$commit" 2> /dev/null; then
+			echo "\"$d/\" depends on \`$REPO\`; tag and push :-)"
+			git push --tag
+			sleep 8
+		else
+			echo "\"$d/\" depends on \`$REPO\` but tag exists; SKIP"
+		fi
 	fi
 done
 
