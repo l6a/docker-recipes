@@ -16,26 +16,32 @@
 # permissions and limitations under the License.
 
 if test "${#}" -lt 1; then
-	echo "usage: ${0} [PARENT_GIT_TAG]"
+	echo "usage: ${0} [IMAGE_NAME]"
 	exit 0
 fi
 
-PARENT_IMG="${1%-*}"
-PARENT_TAG="${1##*-}"
+echo "Parent image: \"$1\""
 
-echo "IMG: $PARENT_IMG"
-echo "TAG: $PARENT_TAG"
+# We assume the image name takes the following form:
+#
+#     <domain>/<long:repo/name>:tag
+#
+# We allows the middle "long repo name" contain special characters such as '/' and ':'
+
+REPO_TAG="${1#*/}"    # remove short prefix (domain)
+REPO="${REPO_TAG%:*}" # remove short suffix
+TAG="${REPO_TAG##*:}" # remove long  prefix
 
 for f in */Dockerfile; do
 	echo "----------------------------------------------------------------"
 	d="${f%/Dockerfile}"
 	commit=$(git log --grep "git tag $d" --pretty='format:%H' | head -n1)
-	if ! grep -xq "^FROM	l6acon/${PARENT_IMG}.*$" "$f"; then
-		echo "\`$d\` does not depend on \`$PARENT_IMG\`.  SKIP"
+	if ! grep -Eq "^FROM	${REPO}.*$" "$f"; then
+		echo "\`$d\` does not depend on \`$REPO_TAG\`.  SKIP"
 	elif test -z "$commit"; then
-		echo "\`$d\` depend on \`$PARENT_IMG\` but no commit was found.  SKIP"
+		echo "\`$d\` depend on \`$REPO_TAG\` but no commit was found.  SKIP"
 	else
-		echo "\`$d\` depends on \`$PARENT_IMG\` :-)"
+		echo "\`$d\` depends on \`$REPO_TAG\` :-)"
 		cmds=$(git log -1 "$commit" --pretty='format:%b' | sed 's/Please run `\(.*\) && git push --tag` after commit./\1/')
 		eval " $cmds $commit && git push --tag"
 		sleep 8

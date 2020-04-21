@@ -10,4 +10,4 @@ jobs:
         with:
           fetch-depth: 16
       - run: 'echo "payload: ${{ toJson(github.event.client_payload) }}"'
-      - run: 'bin/child-tag "${{ github.event.client_payload.git_tag }}"'
+      - run: 'bin/child-tag "${{ github.event.client_payload.image_name }}"'
