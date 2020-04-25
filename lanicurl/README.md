@@ -5,7 +5,7 @@ It is a base image to build `lanidev`.
 
 ## Releases
 
-[`lanicurl`][1] tags | `lanibase` tag
+[`l6acon/lanicurl`][1] tags | `l6acon/lanibase` tag
 --- | ---
 `10.2`, `20200130`, `buster`, `latest` | `20200130`
 

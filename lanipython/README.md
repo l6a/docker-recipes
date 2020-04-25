@@ -19,7 +19,7 @@ use an entrypoint script similar to `lanipython`'s.
 
 ## Releases
 
-[`lanibase`][1] tags | `lanibase` tag | `python` digest
+[`l6acon/lanibase`][1] tags | `l6acon/lanibase` tag | `python` digest
 --- | --- | ---
 `3.8.1`, `20200130`, `3.8`, `3`, `latest` | `20200130` | `sha256:73f3903470a6e55202a6bb989c23b047487eb1728feba655410076da24106838`
 

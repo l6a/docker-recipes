@@ -6,7 +6,7 @@ It is a base image to build `lanidev`.
 
 ## Releases
 
-[`laniscm`][1] tags | `lanicurl` tag
+[`l6acon/laniscm`][1] tags | `l6acon/lanicurl` tag
 --- | ---
 `10.2`, `20200130`, `buster`, `latest` | `20200130`
 

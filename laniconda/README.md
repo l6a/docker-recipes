@@ -19,7 +19,7 @@ use an entrypoint script similar to `laniconda`'s.
 
 ## Releases
 
-[`laniconda`][1] tags | `lanibase` tag | Conda version
+[`l6acon/laniconda`][1] tags | `l6acon/lanibase` tag | Conda version
 --- | --- | ---
 `4.8.2`, `20200130`, `4.8`, `4`, `latest` | `20200130` | `py38_4.8.2`
 

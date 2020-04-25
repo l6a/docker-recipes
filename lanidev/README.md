@@ -21,7 +21,7 @@ use an entrypoint script similar to `lanidev`'s.
 
 ## Releases
 
-[`lanidev`][1] tags | `lanidev` tag
+[`l6acon/lanidev`][1] tags | `l6acon/lanidev` tag
 --- | ---
 `10.2`, `20200130`, `buster`, `latest` | `20200130`
 
