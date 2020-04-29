@@ -22,7 +22,7 @@ fi
 
 if test "${#}" -lt 1; then
 	# Note the specific order of the directories
-	for f in lani{base,curl,scm,dev,python,conda}/Dockerfile; do
+	for f in lani{base,curl,scm,dep,gcc,python,conda}/Dockerfile; do
 		d="${f%/Dockerfile}"
 		eval "${0} ${commit} ${d}"
 	done
