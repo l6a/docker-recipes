@@ -12,7 +12,7 @@ to `/etc/passwd` and `/etc/group`.
 Therefore, to run `lanipython`-based images as a named non-root user,
 use
 
-    docker run --rm -it -u $(id -u):$(id -g) -e USER l6acon/lanipython
+    l6a lanipython [args]
 
 Images that build on `lanipython`, if override the entrypoint, should
 use an entrypoint script similar to `lanipython`'s.

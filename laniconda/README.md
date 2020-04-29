@@ -12,7 +12,7 @@ to `/etc/passwd` and `/etc/group`.
 Therefore, to run `laniconda`-based images as a named non-root user,
 use
 
-    docker run --rm -it -u $(id -u):$(id -g) -e USER l6acon/laniconda
+    l6a laniconda [args]
 
 Images that build on `laniconda`, if override the entrypoint, should
 use an entrypoint script similar to `laniconda`'s.

@@ -14,7 +14,7 @@ to `/etc/passwd` and `/etc/group`.
 Therefore, to run `lanigcc`-based images as a named non-root user,
 use
 
-    docker run --rm -it -u $(id -u):$(id -g) -e USER l6acon/lanigcc
+    l6a lanigcc [args]
 
 Images that build on `lanigcc`, if override the entrypoint, should
 use an entrypoint script similar to `lanigcc`'s.
