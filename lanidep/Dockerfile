@@ -13,7 +13,7 @@
 # implied.  See the License for the specific language governing
 # permissions and limitations under the License.
 
-ARG	dsttag=10.2,20200130,buster,latest
+ARG	dsttag=buster-dev,dev
 ARG	srctag=20200130
 
 FROM	l6acon/laniscm:${srctag}
