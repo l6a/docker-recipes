@@ -21,8 +21,9 @@ use an entrypoint script similar to `lanigcc`'s.
 
 ## Releases
 
-[`l6acon/lanigcc`][1] tags | `l6acon/lanigcc` tag
+[`l6acon/lanigcc`][1] tags | `l6acon/lanidep` tag
 --- | ---
+`buster-dev`, `dev` | `dev`
 `10.2`, `20200130`, `buster`, `latest` | `20200130`
 
 Note that `lanigcc`'s "release tags", e.g., `10.2`, have different

@@ -49,11 +49,10 @@ file.
 Nevertheless, a typical `README.md` contains a table like the
 following in its "Releases" section.
 
-[`l6acon/lanibase`][1] tags | `debian` tag | `debian` digest
---- | --- | ---
-`10.3-dev`, `buster-dev`, `dev`        | `buster-20200414-slim` | `sha256:1b8a66f829a3563f98f941f4e0e2ecc619ad12f22331d297d2a9d1e2f18dc257`
-`10.2`, `20200130`, `buster`, `latest` | `buster-20200130-slim` | `sha256:9ab269df3cfa21324fcbfcf5366722d99d77ab480a8cbb0727612f7ea4e6ae27`
-`10.1`, `20191014`                     | `buster-20191014-slim` | `sha256:11253793361a12861562d1d7b15b8b7e25ac30dd631e3d206ed1ca969bf97b7d`
+`l6acon/lanidep` tags | `l6acon/laniscm` tag
+--- | ---
+`buster-dev`, `dev` | `20200130`
+`10.2`, `20200130`, `buster`, `latest` | `20200130`
 
 Laniakea uses two tagging tracks to enable rapid software development
 and stable software releases (for reproducible science).
