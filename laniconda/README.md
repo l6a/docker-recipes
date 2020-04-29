@@ -23,18 +23,10 @@ use an entrypoint script similar to `laniconda`'s.
 --- | --- | ---
 `4.8.2`, `20200130`, `4.8`, `4`, `latest` | `20200130` | `py38_4.8.2`
 
-Note that `laniconda`'s "release tags", e.g., `10.1`, have different
-meaning than `debian`'s point release versions.
-For `debian`, the
-[point release versions](https://wiki.debian.org/DebianReleases/PointReleases)
-are defined at the release time.
-However, `laniconda` images are based on
-[official `debian` Docker images](https://hub.docker.com/_/debian),
-which are freezes of the rolling releases.
-Because the `debian:10.1` Docker image only got frozen at
-`debian:buster-20191014-slim`, which is closer to the `debian` 10.2
-point release, there is a time lag between the same versions of
-`debian` Docker images and point releases.
-This time tag is carried over to `laniconda`.
+Note that `laniconda`'s "release tags", e.g., `4.8.2`, refers to
+Conda's version and is unrelated to its python or debian version.
+Nevertheless, we tend try to provide more updated releases for
+`laniconda` so we would use the latest version of python and debian
+available at docker build time.
 
 [1]: https://hub.docker.com/repository/docker/l6acon/laniconda
