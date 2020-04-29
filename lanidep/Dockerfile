@@ -17,36 +17,8 @@ ARG	dsttag=10.2,20200130,buster,latest
 ARG	srctag=20200130
 
 FROM	l6acon/laniscm:${srctag}
-RUN	laniapt autoconf automake libtool make patch \
-		bzip2 unzip xz-utils \
-		dpkg-dev file \
-		gcc g++ gfortran \
-		imagemagick \
-		libbz2-dev \
-		libc6-dev \
-		libcurl4-openssl-dev \
-		libdb-dev \
-		libevent-dev \
-		libffi-dev \
-		libgdbm-dev \
-		libglib2.0-dev \
-		libgmp-dev \
-		libjpeg-dev \
-		libkrb5-dev \
-		liblzma-dev \
-		libmagickcore-dev \
-		libmagickwand-dev \
-		libmaxminddb-dev \
-		libncurses5-dev \
-		libncursesw5-dev \
-		libpng-dev \
-		libpq-dev \
-		libreadline-dev \
-		libsqlite3-dev \
-		libssl-dev \
-		libwebp-dev \
-		libxml2-dev \
-		libxslt-dev \
-		libyaml-dev \
-		zlib1g-dev \
-		default-libmysqlclient-dev
+RUN	laniapt binutils make patch file bzip2 unzip xz-utils \
+		autoconf automake \
+		libgmp-dev libblas-dev liblapack-dev libgsl-dev \
+		libfftw3-dev libnfft3-dev \
+		libhdf5-dev libnetcdf-dev libcfitsio-dev
