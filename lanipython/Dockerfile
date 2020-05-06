@@ -21,6 +21,7 @@ ARG	digest=sha256:73f3903470a6e55202a6bb989c23b047487eb1728feba655410076da241068
 # The base image: an official python image
 
 FROM	python@${digest} AS base
+LABEL	maintainer="Chi-kwan Chan <chanc@arizona.edu>"
 
 RUN     sed -i- 's/^#//g;s/^d/# d/g;s/^ //g;' /etc/apt/sources.list &&\
 	echo 'Acquire::Check-Valid-Until false;' > /etc/apt/apt.conf.d/10nochk
@@ -34,6 +35,8 @@ FROM	l6acon/lanibase:${srctag} AS builder
 # The Laniakea python runtime image
 
 FROM	base
+ENV	LANG=C.UTF-8 \
+	LC_ALL=C.UTF-8
 
 COPY	--from=builder /usr/local/sbin/* /usr/local/sbin/
 RUN	chmod u+s /usr/local/sbin/selfadd
