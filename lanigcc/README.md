@@ -24,7 +24,7 @@ use an entrypoint script similar to `lanigcc`'s.
 [`l6acon/lanigcc`][1] tags | `l6acon/lanidep` tag
 --- | ---
 `buster-dev`, `dev` | `dev`
-`10.2`, `20200130`, `buster`, `latest` | `20200130`
+`10.2`, `20200130`, `10`, `buster`, `latest` | `20200130`
 
 Note that `lanigcc`'s "release tags", e.g., `10.2`, have different
 meaning than `debian`'s point release versions.
