@@ -20,7 +20,8 @@ use an entrypoint script similar to `lanibase`'s.
 
 [`l6acon/lanibase`][1] tags | `debian` tag | `debian` digest
 --- | --- | ---
-`10.2`, `20200130`, `10`, `buster`, `latest` | `buster-20200130-slim` | `sha256:9ab269df3cfa21324fcbfcf5366722d99d77ab480a8cbb0727612f7ea4e6ae27`
+`10.3`, `20200422`, `10`, `buster`, `latest` | `buster-20200422-slim` | `sha256:9d08b5e6b5f23a61634da3d08d654a24b06946f4ef7f6dd8b75e52c6baa1f1b0`
+`10.2`, `20200130`                           | `buster-20200130-slim` | `sha256:9ab269df3cfa21324fcbfcf5366722d99d77ab480a8cbb0727612f7ea4e6ae27`
 `10.1`, `20191014`                           | `buster-20191014-slim` | `sha256:11253793361a12861562d1d7b15b8b7e25ac30dd631e3d206ed1ca969bf97b7d`
 
 Note that `lanibase`'s "release tags", e.g., `10.2`, have different

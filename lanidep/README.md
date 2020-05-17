@@ -22,8 +22,8 @@ use an entrypoint script similar to `lanidep`'s.
 
 [`l6acon/lanidep`][1] tags | `l6acon/laniscm` tag
 --- | ---
-`buster-dev`, `dev` | `20200130`
-`10.2`, `20200130`, `10`, `buster`, `latest` | `20200130`
+`10.3`, `20200422`, `10`, `buster`, `latest` | `20200422`
+`10.2`, `20200130`                           | `20200130`
 
 Note that `lanidep`'s "release tags", e.g., `10.2`, have different
 meaning than `debian`'s point release versions.
