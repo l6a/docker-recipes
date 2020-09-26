@@ -23,7 +23,8 @@ use an entrypoint script similar to `lanigcc`'s.
 
 [`l6acon/lanigcc`][1] tags | `l6acon/lanidep` tag
 --- | ---
-`10.3`, `20200422`, `10`, `buster`, `latest` | `20200422`
+`10.4`, `20200720`, `10`, `buster`, `latest` | `20200720`
+`10.3`, `20200422`                           | `20200422`
 `10.2`, `20200130`                           | `20200130`
 
 Note that `lanigcc`'s "release tags", e.g., `10.2`, have different

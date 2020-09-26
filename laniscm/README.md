@@ -8,7 +8,8 @@ It is a base image to build `lanidev`.
 
 [`l6acon/laniscm`][1] tags | `l6acon/lanicurl` tag
 --- | ---
-`10.3`, `20200422`, `10`, `buster`, `latest` | `20200422`
+`10.4`, `20200720`, `10`, `buster`, `latest` | `20200720`
+`10.3`, `20200422`                           | `20200422`
 `10.2`, `20200130`                           | `20200130`
 
 Note that `laniscm`'s "release tags", e.g., `10.2`, have different
