@@ -13,8 +13,8 @@
 # implied.  See the License for the specific language governing
 # permissions and limitations under the License.
 
-ARG	dsttag=10.3,20200422,10,buster,latest
-ARG	srctag=20200422
+ARG	dsttag=10.4,20200720,10,buster,latest
+ARG	srctag=20200720
 
 FROM	l6acon/lanidep:${srctag}
 RUN	laniapt gcc g++ gfortran libopenmpi-dev \
