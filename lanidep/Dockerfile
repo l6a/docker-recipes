@@ -13,8 +13,8 @@
 # implied.  See the License for the specific language governing
 # permissions and limitations under the License.
 
-ARG	dsttag=10.4,20200720,10,buster,latest
-ARG	srctag=20200720
+ARG	dsttag=10.5,20200908,10,buster,latest
+ARG	srctag=20200908
 
 FROM	l6acon/laniscm:${srctag}
 RUN	laniapt binutils make patch file bzip2 unzip xz-utils \
