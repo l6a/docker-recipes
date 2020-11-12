@@ -21,7 +21,8 @@ use an entrypoint script similar to `lanipython`'s.
 
 [`l6acon/lanipython`][1] tags | `l6acon/lanibase` tag | `python` digest
 --- | --- | ---
-`3.8.2`, `20200429`, `3.8`, `3`, `latest` | `20200422` | `sha256:ed48f14994a6de2240f0b3a491f75a78b491010b45c1cfa16273022ae5408c61`
+`3.8.3`, `20200609`, `3.8`, `3`, `latest` | `20200422` | `sha256:938fd520a888e9dbac3de374b8ba495cc50fe96440030264a40f733052001895`
+`3.8.2`, `20200429`                       | `20200422` | `sha256:ed48f14994a6de2240f0b3a491f75a78b491010b45c1cfa16273022ae5408c61`
 `3.8.1`, `20200206`                       | `20200130` | `sha256:73f3903470a6e55202a6bb989c23b047487eb1728feba655410076da24106838`
 
 Note that `lanipython`'s "release tags", e.g., `3.8.1`, is not always
