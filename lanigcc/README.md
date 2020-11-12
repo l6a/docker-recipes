@@ -23,7 +23,8 @@ use an entrypoint script similar to `lanigcc`'s.
 
 [`l6acon/lanigcc`][1] tags | `l6acon/lanidep` tag
 --- | ---
-`10.4`, `20200720`, `10`, `buster`, `latest` | `20200720`
+`10.5`, `20200908`, `10`, `buster`, `latest` | `20200908`
+`10.4`, `20200720`                           | `20200720`
 `10.3`, `20200422`                           | `20200422`
 `10.2`, `20200130`                           | `20200130`
 
