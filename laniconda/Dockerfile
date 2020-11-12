@@ -13,9 +13,9 @@
 # implied.  See the License for the specific language governing
 # permissions and limitations under the License.
 
-ARG	dsttag=4.8.2,20200130,4.8,4,latest
-ARG	srctag=20200130
-ARG	condaversion=py38_4.8.2
+ARG	dsttag=4.8.3,20200616,4.8,4,latest
+ARG	srctag=20200422
+ARG	condaversion=py38_4.8.3
 
 #==============================================================================
 # The base image: the Laniakea base image
