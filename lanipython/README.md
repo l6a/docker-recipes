@@ -21,7 +21,8 @@ use an entrypoint script similar to `lanipython`'s.
 
 [`l6acon/lanipython`][1] tags | `l6acon/lanibase` tag | `python` digest
 --- | --- | ---
-`3.8.4`, `20200714`, `3.8`, `3`, `latest` | `20200422` | `sha256:9a827faf80ac75c692525c67bc6cff0e6e4a4093e73ad2674d17584b0c645af8`
+`3.8.5`, `20200714`, `3.8`, `3`, `latest` | `20200908` | `sha256:502cd057453744145010eceb5a4af1e4f04ebed54f6e1e8d23d29ebe2afdbe6d`
+`3.8.4`, `20200714`                       | `20200422` | `sha256:9a827faf80ac75c692525c67bc6cff0e6e4a4093e73ad2674d17584b0c645af8`
 `3.8.3`, `20200609`,                      | `20200422` | `sha256:938fd520a888e9dbac3de374b8ba495cc50fe96440030264a40f733052001895`
 `3.8.2`, `20200429`                       | `20200422` | `sha256:ed48f14994a6de2240f0b3a491f75a78b491010b45c1cfa16273022ae5408c61`
 `3.8.1`, `20200206`                       | `20200130` | `sha256:73f3903470a6e55202a6bb989c23b047487eb1728feba655410076da24106838`
