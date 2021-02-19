@@ -13,8 +13,8 @@
 # implied.  See the License for the specific language governing
 # permissions and limitations under the License.
 
-ARG	dsttag=10.5,20200908,10,buster,latest
-ARG	srctag=20200908
+ARG	dsttag=10.6,20201117,10,buster,latest
+ARG	srctag=20201117
 
 FROM	l6acon/lanicurl:${srctag}
 RUN	laniapt git mercurial openssh-client subversion procps
