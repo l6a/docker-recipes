@@ -21,7 +21,8 @@ use an entrypoint script similar to `laniconda`'s.
 
 [`l6acon/laniconda`][1] tags | `l6acon/lanibase` tag | Conda version
 --- | --- | ---
-`4.8.3`, `20200616`, `4.8`, `4`, `latest` | `20200422` | `py38_4.8.3`
+`4.9.2`, `20201123`, `4.9`, `4`, `latest` | `20201117` | `py38_4.9.2`
+`4.8.3`, `20200616`, `4.8`                | `20200422` | `py38_4.8.3`
 `4.8.2`, `20200311`                       | `20200130` | `py38_4.8.2`
 
 Note that `laniconda`'s "release tags", e.g., `4.8.2`, refers to
