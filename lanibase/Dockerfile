@@ -13,9 +13,9 @@
 # implied.  See the License for the specific language governing
 # permissions and limitations under the License.
 
-ARG	dsttag=10.5,20200908,10,buster,latest
-ARG	srctag=buster-20200908-slim
-ARG	digest=sha256:8d81110c3f93a777e3f4053a6b18b70e4a1003655b8c2664bdf18b19043f99d9
+ARG	dsttag=10.6,20201117,10,buster,latest
+ARG	srctag=buster-20201117-slim
+ARG	digest=sha256:bb5473161a03d24b397c46778e58f845e29f1ce42a2953666ef8289f00afda42
 
 #==============================================================================
 # The base image: an official debian slim image
