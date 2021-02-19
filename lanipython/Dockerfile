@@ -13,9 +13,9 @@
 # implied.  See the License for the specific language governing
 # permissions and limitations under the License.
 
-ARG	dsttag=3.8.5,20200714,3.8,3,latest
-ARG	srctag=20200908
-ARG	digest=sha256:502cd057453744145010eceb5a4af1e4f04ebed54f6e1e8d23d29ebe2afdbe6d
+ARG	dsttag=3.8.6,20201215,3.8,3,latest
+ARG	srctag=20201117
+ARG	digest=sha256:83323df595e261d5aabf0c96c5ae65dcaa42049495c86de21f54c39d61a824ff
 
 #==============================================================================
 # The base image: an official python image
