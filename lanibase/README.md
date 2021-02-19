@@ -20,7 +20,8 @@ use an entrypoint script similar to `lanibase`'s.
 
 [`l6acon/lanibase`][1] tags | `debian` tag | `debian` digest
 --- | --- | ---
-`10.5`, `20200908`, `10`, `buster`, `latest` | `buster-20200908-slim` | `sha256:8d81110c3f93a777e3f4053a6b18b70e4a1003655b8c2664bdf18b19043f99d9`
+`10.6`, `20201117`, `10`, `buster`, `latest` | `buster-20201117-slim` | `sha256:bb5473161a03d24b397c46778e58f845e29f1ce42a2953666ef8289f00afda42`
+`10.5`, `20200908`                           | `buster-20200908-slim` | `sha256:8d81110c3f93a777e3f4053a6b18b70e4a1003655b8c2664bdf18b19043f99d9`
 `10.4`, `20200720`                           | `buster-20200720-slim` | `sha256:79326248a982be0b36e8280f906916fceffdd5c17a298b14446e5e72cc822fe7`
 `10.3`, `20200422`                           | `buster-20200422-slim` | `sha256:9d08b5e6b5f23a61634da3d08d654a24b06946f4ef7f6dd8b75e52c6baa1f1b0`
 `10.2`, `20200130`                           | `buster-20200130-slim` | `sha256:9ab269df3cfa21324fcbfcf5366722d99d77ab480a8cbb0727612f7ea4e6ae27`
