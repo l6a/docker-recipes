@@ -26,5 +26,18 @@ if test "$PWD" = '/' -a -d "$HOME"; then
 	cd "$HOME"
 fi
 
+# Laniakea hooks: Docker entrypoint always has arguments (i.e., CMD);
+# however, some setup script may break if it takes any argument.
+# Therefore, we have to save all the arguments, remove them form "$@",
+# and then restore them after sourcing the hooks.
+args=("$@")
+set --
+for h in ${LANIAKEA_HOOKS} ${LANIAKEA_HOOK} ${L6A_HOOKS} ${L6A_HOOK}; do
+	if test -f $h; then
+		source $h
+	fi
+done
+set -- "${args[@]}"
+
 # Run all commands
 exec "$@"
